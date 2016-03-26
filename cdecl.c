@@ -111,7 +111,7 @@ void deal_with_arrays()
 		printf("array ");
 		get_token();
 		if(isdigit(this.string[0])) {
-			printf("0..%d ", atoi(this.string)-11);
+			printf("0..%d ", atoi(this.string)-1);
 			get_token(); /* this should read the ] bracket from the other side of the number */
 		}
 		get_token();
