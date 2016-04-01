@@ -3,9 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_PHRASE_LENGTH 7
+#define MAX_PHRASE_LENGTH 11
 #define MIN_PHRASE_LENGTH 2
-#define MAX_WORD_LENGTH 20
+#define MAX_WORD_LENGTH 200
 
 typedef struct Word Word;
 
@@ -57,30 +57,31 @@ void print_word_train()
 	return;
 }
 
+char *read_next_word()
+{
+	char word[MAX_WORD_LENGTH];
+	char* p = word;
+	while( !isalnum(*p = getchar())){}
+	
+	p++;
+	while(isalnum(*p = getchar())){
+		p++;
+	}
+	*p = '\0';
+
+	p = (char*)malloc(sizeof(char)*(strlen(word)+1));
+	strcpy(p, word);
+	return p;
+}
+
+
 int main(int argc, char *argv[])
 {
-	add_word_to_train("one");
-	print_word_train();
-	add_word_to_train("two");
-	print_word_train();
-	add_word_to_train("three");
-	print_word_train();
-	add_word_to_train("four");
-	print_word_train();
-	add_word_to_train("five");
-	print_word_train();
-	add_word_to_train("six");
-	print_word_train();
-	add_word_to_train("seven");
-	print_word_train();
-	add_word_to_train("eight");
-	print_word_train();
-	add_word_to_train("nine");
-	print_word_train();
-	add_word_to_train("ten");
-	print_word_train();
-	add_word_to_train("eleven");
-	print_word_train();
+	char* next_word;
+	while((next_word = read_next_word())){
+		add_word_to_train(next_word);
+		print_word_train();
+	}
 	return 0;
 }
 
