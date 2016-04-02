@@ -35,6 +35,7 @@ void add_word_to_train(char *new_word_string)
 		new_word = train_tail;
 		train_tail = train_tail->next;
 		train_tail->previous = 0;
+		free(new_word->word);
 	}
 	if(train_head != 0){
 		train_head->next = new_word;
